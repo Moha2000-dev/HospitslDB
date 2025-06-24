@@ -19,7 +19,7 @@ WHERE MONTH(A.Time) = 6 AND YEAR(A.Time) = 2024
 GROUP BY D.DoctorsID, D.Name
 HAVING COUNT(*) > 5;
 
--- 4. JOIN across 3–4 tables: Patient, Doctor, Department, MedicalRecords
+-- 4. JOIN across 3â€“4 tables: Patient, Doctor, Department, MedicalRecords
 SELECT P.Name AS PatientName, D.Name AS DoctorName, D.DepartmentName, M.Diagnosis
 FROM MedicalRecords M
 JOIN Patients P ON M.PatientID = P.PatientID
@@ -35,7 +35,7 @@ JOIN Doctors D ON M.DoctorsID = D.DoctorsID
 GROUP BY D.DepartmentName
 HAVING AVG(S.ServiceCost) > 300;
 
--- 6. Use EXISTS: List patients who have medical records
+-- 6.  List patients who have medical records
 SELECT P.Name
 FROM Patients P
 WHERE EXISTS (
@@ -237,7 +237,7 @@ BEGIN
 END;
 GO
 
---  4. EXTRA: Prevent Appointments in the past
+--  4. Prevent Appointments in the past
 GO
 CREATE TRIGGER trg_NoPastAppointments
 ON Appointments
@@ -254,7 +254,7 @@ BEGIN
 END;
 GO
 
---  5. EXTRA: After new Billing then insert default Service
+--  5.  After new Billing then insert default Service
 GO
 CREATE TRIGGER trg_DefaultServiceOnBilling
 ON Billing
@@ -282,10 +282,10 @@ GRANT INSERT, UPDATE ON DATABASE::HospitalDB TO AdminUser;
 --  Revoke DELETE permission on Doctors from everyone (or specific role if needed)
 REVOKE DELETE ON Doctors TO PUBLIC; -- Or use: TO DoctorUser / AdminUser
 
---  EXTRA 1: Prevent DoctorUser from updating Patients table
+--   Prevent DoctorUser from updating Patients table
 DENY UPDATE ON Patients TO DoctorUser;
 
---  EXTRA 2: Allow AdminUser to create stored procedures (for automation tasks)
+--   Allow AdminUser to create stored procedures (for automation tasks)
 GRANT CREATE PROCEDURE TO AdminUser;
 --//////////////////////////////////////////////////////////////////////////////////////////////////////////////////Transaction Control Language//////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -306,11 +306,11 @@ BEGIN TRY
     INSERT INTO Billing (BillingID, PatientID, Diagnosis, InsuranceDiscount, Date)
     VALUES (21, 21, 'Infection', 0.10, GETDATE());
 
-    --  EXTRA: Insert a service linked to billing
+    --  Insert a service linked to billing
     INSERT INTO Services (ServiceID, BillingID, Service, ServiceCost)
     VALUES (21, 21, 'Antibiotics Therapy', 250.00);
 
-    --  EXTRA: Log to MedicalRecords for reference
+    -- Log to MedicalRecords for reference
     INSERT INTO MedicalRecords (PatientID, DoctorsID, MedicalRecordsID, Diagnosis, TreatmentPlans, Date, Notes)
     VALUES (21, 5, 21, 'Infection', 'Antibiotics', GETDATE(), 'Auto-log from transaction');
 
