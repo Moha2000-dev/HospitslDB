@@ -2,7 +2,7 @@
 
 
 
-````markdown
+
 #  HospitalDB Management System
 
 This SQL-based project simulates a complete Hospital Database Management System (HospitalDB), including patient records, doctor assignments, room bookings, billing, reporting, and automation. It uses SQL Server features like stored procedures, views, triggers, transactions, and SQL Agent Jobs.
@@ -39,7 +39,7 @@ The project is a full hospital system that manages:
    ```sql
    CREATE DATABASE HospitalDB;
    USE HospitalDB;
-````
+
 
 2. **Create Tables:**
    Define tables like `Patients`, `Doctors`, `Appointments`, `MedicalRecords`, `Room`, `Billing`, etc.
@@ -163,8 +163,3 @@ A scheduled task handled by **SQL Server Agent**. Used for **automation**.
  **HospitalDB**: A complete smart hospital system using SQL.
 
 ```
-
-
-
-
-
