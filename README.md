@@ -13,11 +13,10 @@ This SQL-based project simulates a complete Hospital Database Management System 
 
 - [Overview](#overview)
 - [Features](#features)
-- [Setup Instructions](#setup-instructions)
 - [Usage Guide](#usage-guide)
 - [Components Explained](#components-explained)
 - [Error Handling](#error-handling)
-- [Contributors](#contributors)
+
 
 ---
 
